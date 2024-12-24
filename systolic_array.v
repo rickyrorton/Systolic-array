@@ -1,19 +1,29 @@
 module systolic_array(
     input clk,
     input reset,
-    input [7:0] inA0,inA1,inA2,inA3,
-    input [7:0] inB0,inB4,inB8,inB12,
-    output [127:0] out,
+    input [31:0] inA,
+    input [31:0] inB,
+    output [127:0] result,
     output reg done
 );
 
-    wire [7:0] inA4,inA5,inA6,inA7,inA8,inA9,inA10,inA11,inA12,inA13,inA14,inA15;
-    wire [7:0] inB1,inB2,inB3,inB5,inB6,inB7,inB9,inB10,inB11,inB13,inB14,inB15;
+    wire [7:0] inA0,inA1,inA2,inA3,inA4,inA5,inA6,inA7,inA8,inA9,inA10,inA11,inA12,inA13,inA14,inA15;
+    wire [7:0] inB0,inB1,inB2,inB3,inB4,inB5,inB6,inB7,inB8,inB9,inB10,inB11,inB12,inB13,inB14,inB15;
     wire [7:0] out0,out1,out2,out3,out4,out5,out6,out7,out8,out9,out10,out11,out12,out13,out14,out15;
     
     reg [3:0]count;
 
-    assign out = {out0,out1,out2,out3,out4,out5,out6,out7,out8,out9,out10,out11,out12,out13,out14,out15};
+    assign inA0 = inA[31:24];
+    assign inA1 = inA[23:16];
+    assign inA2 = inA[15:8];
+    assign inA3 = inA[7:0];
+
+    assign inB0 = inB[31:24];
+    assign inB4 = inB[23:16];
+    assign inB8 = inB[15:8];
+    assign inB12 = inB[7:0];
+
+    assign result = {out0,out1,out2,out3,out4,out5,out6,out7,out8,out9,out10,out11,out12,out13,out14,out15};
 
     //First row
     int8mac mac0(inA0,inB0,clk,reset,inA4,inB1,out0);
