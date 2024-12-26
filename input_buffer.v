@@ -1,4 +1,4 @@
-//Input buffer which takes input from DMA through the AXI4-S interface and feeds data to the systolic array in a time staggered manner
+//Input buffer which takes input from DMA through the AXI4-S interface and feeds data to the systolic array
 module input_buffer (
     input axi_clk,axi_rst_n,
     //AXI4-S Slave

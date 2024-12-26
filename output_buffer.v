@@ -1,8 +1,8 @@
 module output_buffer (
     input axi_clk,axi_rst_n,
     //AXI4-S Master
-    output m_axis_valid,
-    output [31:0] m_axis_data,
+    output reg m_axis_valid,
+    output reg [31:0] m_axis_data,
     input m_axis_ready,
     //Write interface
     input [127:0] write_data
